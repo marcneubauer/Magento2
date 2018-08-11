@@ -57,7 +57,7 @@ return array(
                 ),
         ),
     'x-frame-options' => 'SAMEORIGIN',
-    'MAGE_MODE' => 'production',
+    'MAGE_MODE' => 'developer',
     'cache_types' =>
         array(
             'config' => 1,
@@ -77,7 +77,7 @@ return array(
         ),
     'install' =>
         array(
-            'date' => 'Thu, 05 Jan 2017 22:49:50 +0000',
+            'date' => 'Fri, 10 Aug 2018 12:34:56 +0000',
         ),
     'cache' =>
         array(
