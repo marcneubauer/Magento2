@@ -27,6 +27,8 @@ cp -rv /var/www/env.sample.php ./app/etc/env.php;
 n98 cron:install;
 php -f ./bin/magento indexer:set-mode schedule;
 cp ~/.composer/auth.json var/composer_home/auth.json \
+&& echo "Installing commerce-cif-magento-extension/AggregatedServices" \
+#
 && php -f ./bin/magento sampledata:deploy \
 && php -f ./bin/magento setup:upgrade \
 && php -f ./bin/magento indexer:reindex \
