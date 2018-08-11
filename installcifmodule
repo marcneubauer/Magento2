@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+aggravatedservices="../commerce-cif-magento-extension/AggregatedServices";
+
+if [ -d src/app/code/Magento ]; then
+  if [ -d ${aggravatedservices} ]; then
+    echo "Copying commerce-cif-magento-extension/AggregatedServices into src";
+    cp -R ${aggravatedservices}  src/app/code/Magento;
+  fi
+fi
+
+#dockerdo() {
+#    docker exec -i magecif_apache_1 /bin/bash -c "$1"
+#}
