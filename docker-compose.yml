@@ -11,7 +11,7 @@ services:
       - <project_name>-sync:/var/www/html:nocopy
       - ~/.composer:/var/www/.composer
       - ~/.npm:/var/www/.npm
-      #- ../commerce-cif-magento-extension/AggregatedServices:/var/www/app/code/Magento/AggregatedServices
+      - ../commerce-cif-magento-extension/AggregatedServices:/var/www/app/code/Magento/AggregatedServices
       # - ~/.nvm:/var/www/.nvm
     environment:
       XDEBUG_CONFIG: "remote_host=10.254.254.254 remote_connect_back=0"
