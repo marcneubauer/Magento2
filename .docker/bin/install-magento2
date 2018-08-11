@@ -18,9 +18,8 @@ chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc \
     --admin-password=admin123 \
     --language=en_US \
     --currency=USD \
-    --timezone=America/Chicago \
+    --timezone=America/Denver \
     --use-rewrites=1 \
-    --use-sample-data \
     --backend-frontname=admin \
     --use-sample-data \
 && mv ./app/etc/env.php ./app/etc/env.original.php;
