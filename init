@@ -25,22 +25,22 @@ echo "-------------------======= Pulling Image ========-------------------------
 docker image pull rafaelcgstz/magento2
 
 # apply project name to config files
-if [ "$(uname)" == "Darwin" ]; then
-#  if on a mac, checkout mn branch based off of origin/mac
-  git checkout -f mn;
-  sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
-  && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
-  && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml
-else
-# else, good luck bro
-  git checkout -f master;
-  sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml;
-fi
-
-# if initial init then copy across default phpinfo index.php
-if [ ! -e src/index.php ]; then
-  echo "<?php phpinfo();" > src/index.php;
-fi
+#if [ "$(uname)" == "Darwin" ]; then
+##  if on a mac, checkout mn branch based off of origin/mac
+#  git checkout -f mn;
+#  sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
+#  && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
+#  && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml
+#else
+## else, good luck bro
+#  git checkout -f master;
+#  sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml;
+#fi
+#
+## if initial init then copy across default phpinfo index.php
+#if [ ! -e src/index.php ]; then
+#  echo "<?php phpinfo();" > src/index.php;
+#fi
 
 # copy in local app/etc/env.php? again not sure about this
 #if [ -d src/app/etc ]; then
