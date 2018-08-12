@@ -41,7 +41,7 @@ syncs:
     'var/session',
     'var/tmp',
     'node_modules',
-    'generated/*', 
+    'generated/*',
     #'vendor/*',
     'pub/static/*',
     'pub/media/*'
