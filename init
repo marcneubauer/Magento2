@@ -30,7 +30,7 @@ if [ "$(uname)" == "Darwin" ]; then
   git checkout -f mn;
   sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
-  && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml
+  && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" ./start
 else
 # else, good luck bro
