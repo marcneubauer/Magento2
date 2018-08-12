@@ -2,7 +2,7 @@
 echo "---------=======Starting Containers========---------"
 sudo ifconfig lo0 alias 10.254.254.254
 docker-sync start && \
-docker-compose up -d && \
+docker-compose up -p <project_name> -d && \
 version=$(git describe --tags $(git rev-list --tags --max-count=1))
 echo "
 ===================== 🚀 Done 🚀 ===================
