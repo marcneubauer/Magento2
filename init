@@ -43,6 +43,7 @@ if [ ! -f src/index.php ]; then
   echo "<?php phpinfo();" > src/index.php;
 fi
 
+
 # copy in local app/etc/env.php? again not sure about this
 #if [ -d src/app/etc ]; then
 #  if [ ! -e src/app/etc/env.php ]; then
