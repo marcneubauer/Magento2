@@ -42,6 +42,9 @@ else
 fi
 
 # if initial init then copy across default phpinfo index.php
+if [ ! -d src/ ]; then
+  mkdir src;
+fi
 if [ ! -f src/index.php ]; then
   echo "<?php phpinfo();" > src/index.php;
 fi
