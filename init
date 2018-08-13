@@ -27,7 +27,7 @@ docker image pull rafaelcgstz/magento2
 # apply project name to config files
 if [ "$(uname)" == "Darwin" ]; then
 #  if on a mac, checkout mn branch based off of origin/mac
-  git checkout -f mn;
+  git checkout -f mcif;
   sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml \
