@@ -10,3 +10,8 @@ alias node='nodejs'
 
 export NVM_DIR="/var/www/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+alias mclean="rm -rf /var/www/html/magento2/pub/static/frontend/* /var/www/html/magento2/var/view_preprocessed/* /var/www/html/magento2/var/di/* /var/www/html/magento2/var/generation/* /var/www/html/magento2/var/*cache"
+alias mroot="cd /var/www/html/magento2/"
+alias mboom="mclean && magento cache:flush && clearAll && magento setup:upgrade && magento setup:di:compile && magento setup:static-content:deploy -f"

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-if [ $@ ]; then
-  composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:$1 . ;
-else
-  composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition . ;
-fi
-chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc \
+
+echo -e "--------------------Cloning Magento 2 GraphQL community project" \
+&& git clone https://github.com/magento/graphql-ce.git /var/www/html/ 2>&1 \
+&& echo -e "--------------------Composer Installing." \
+&& composer install \
+&& chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc \
 && chmod u+x ./bin/magento \
 && php -f ./bin/magento setup:install --base-url=http://localhost/ \
     --db-host=db \
@@ -18,9 +18,8 @@ chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc \
     --admin-password=admin123 \
     --language=en_US \
     --currency=USD \
-    --timezone=America/Chicago \
+    --timezone=America/Denver \
     --use-rewrites=1 \
-    --use-sample-data \
     --backend-frontname=admin \
     --use-sample-data \
 && mv ./app/etc/env.php ./app/etc/env.original.php;
@@ -34,7 +33,7 @@ cp ~/.composer/auth.json var/composer_home/auth.json \
 && php -f ./bin/magento cache:flush;
 mv package.json.sample package.json ; mv Gruntfile.js.sample Gruntfile.js;
 npm i;
-php -f ./bin/magento deploy:mode:set production \
+php -f ./bin/magento deploy:mode:set developer \
 && composer dump-autoload -o \
 && clear && echo "
 ===================== 🚀 Done 🚀 ===================

@@ -1,8 +1,8 @@
 version: '2'
 services:
   apache:
-    image: rafaelcgstz/magento2
-    # build: .
+#    image: rafaelcgstz/magento2
+    build: .
     ports:
       - "80:80" # web
       - "9001:9000" # xdebug
@@ -11,9 +11,10 @@ services:
       - <project_name>-sync:/var/www/html:nocopy
       - ~/.composer:/var/www/.composer
       - ~/.npm:/var/www/.npm
+     # - ../commerce-cif-magento-extension/AggregatedServices:/var/www/html/app/code/Magento/AggregatedServices
       # - ~/.nvm:/var/www/.nvm
     environment:
-      XDEBUG_CONFIG: "remote_host=10.254.254.254 remote_connect_back=0"      
+      XDEBUG_CONFIG: "remote_host=10.254.254.254 remote_connect_back=0"
       PHP_IDE_CONFIG: "serverName=Docker"
     depends_on:
       - db
