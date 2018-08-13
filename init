@@ -39,7 +39,7 @@ else
 fi
 
 # if initial init then copy across default phpinfo index.php
-if [ ! -e src/index.php ]; then
+if [ ! -f src/index.php ]; then
   echo "<?php phpinfo();" > src/index.php;
 fi
 
