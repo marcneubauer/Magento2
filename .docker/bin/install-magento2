@@ -41,7 +41,7 @@ php -f ./bin/magento deploy:mode:set developer \
 
       Magento 2 Installed successfully!
 
-      🌎 Admin: http://localhost/admin
+      🌎 Admin: http://www.<project_name>.com/admin
       👤 User: admin
       🔑 Password: admin123
 

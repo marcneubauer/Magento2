@@ -19,15 +19,15 @@ git log --graph --boundary '--format=%C(yellow)%h%Creset%C(bold cyan)%d%Creset %
 #git config --global core.fileMode false
 #git config --global diff.renamelimit 5000
 
-
 echo "-------------------======= Pulling Image ========-------------------------" \
 
 docker image pull rafaelcgstz/magento2
 
 # apply project name to config files
 if [ "$(uname)" == "Darwin" ]; then
-#  if on a mac, checkout mn branch based off of origin/mac
+#  if on a mac, checkout mcif branch based off origin/mac
   git checkout -f mcif;
+# sprinkle around project name captured at top
   sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml \
@@ -45,7 +45,6 @@ fi
 if [ ! -f src/index.php ]; then
   echo "<?php phpinfo();" > src/index.php;
 fi
-
 
 # copy in local app/etc/env.php? again not sure about this
 #if [ -d src/app/etc ]; then
