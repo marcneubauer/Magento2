@@ -13,3 +13,6 @@ fi
 #dockerdo() {
 #    docker exec -i magecif_apache_1 /bin/bash -c "$1"
 #}
+
+#magento module:enable Magento_AggregatedServices
+#magento setup:di:compile
