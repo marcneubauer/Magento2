@@ -2,7 +2,7 @@
 
 #aggravatedservices="../commerce-cif-magento-extension/AggregatedServices";
 aggravatedservices="commerce-cif-magento-extension/AggregatedServices";
-projectname="magecif"
+projectname="<project_name>"
 
 # clone cif extension into local dir
 echo "Cloning CIF Module locally";
@@ -17,12 +17,12 @@ if [ -d src/app/code/Magento ]; then
     echo "Copying commerce-cif-magento-extension/AggregatedServices into src";
     #ln -s ${aggravatedservices}  src/app/code/Magento;
     cp -R ${aggravatedservices}  src/app/code/Magento \
-    && echo "Enabling Module";echo ""
-    dockerdo "bin/magento setup:upgrade"
-    dockerdo "bin/magento module:enable Magento_AggregatedServices"
-    dockerdo "bin/magento setup:di:compile"
-    dockerdo "bin/magento setup:static-content:deploy -f"
-    dockerdo "bin/magento cache:clean"
+    && echo "Enabling Module";echo "" \
+    && dockerdo "bin/magento setup:upgrade" \
+    && dockerdo "bin/magento module:enable Magento_AggregatedServices" \
+    && dockerdo "bin/magento setup:di:compile" \
+    && dockerdo "bin/magento setup:static-content:deploy -f" \
+    && dockerdo "bin/magento cache:clean"
     echo "";echo ""
   fi
 fi
