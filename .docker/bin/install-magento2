@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 rm -rf /var/www/html/* \
-&& echo -e "--------------------Cloning Magento 2 GraphQL community project" \
+&& echo -e "----====Cloning Magento 2 GraphQL community project=====----" \
 && git clone https://github.com/magento/graphql-ce.git /var/www/html/ 2>&1 \
-&& echo -e "--------------------Composer Installing." \
+&& echo -e "----====Composer Installing.====----" \
 && composer install \
 && chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc \
 && chmod u+x ./bin/magento \
@@ -45,4 +45,6 @@ php -f ./bin/magento deploy:mode:set developer \
       👤 User: admin
       🔑 Password: admin123
 
+        Add to your local etc/hosts:
+        127.0.0.1  www.<project_name>.com
 ===================== 🚀 Done 🚀 ==================="
