@@ -11,9 +11,9 @@ echo "
       v.$version
       Access your new links:
 
-      🌎 Web server: http://localhost/
-      ⚙️ PHPMyAdmin: http://localhost:8080
-      ✉️ Local emails: http://localhost:8025
+      🌎 Web server: http://www.<project_name>.com/
+      ⚙️ PHPMyAdmin: http://www.<project_name>.com:8080
+      ✉️ Local emails: http://www.<project_name>.com:8025
 
 ===================== 🚀 Done 🚀 ===================" \
 && git status;
