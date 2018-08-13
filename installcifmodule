@@ -16,3 +16,4 @@ fi
 
 #magento module:enable Magento_AggregatedServices
 #magento setup:di:compile
+#scd
