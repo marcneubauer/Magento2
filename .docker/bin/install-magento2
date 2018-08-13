@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-echo -e "--------------------Cloning Magento 2 GraphQL community project" \
+rm -rf /var/www/html/* \
+&& echo -e "--------------------Cloning Magento 2 GraphQL community project" \
 && git clone https://github.com/magento/graphql-ce.git /var/www/html/ 2>&1 \
 && echo -e "--------------------Composer Installing." \
 && composer install \
