@@ -34,7 +34,9 @@ if [ "$(uname)" == "Darwin" ]; then
   && sed -i '' -e "s/<project_name>/$projectName/g" ./start \
   && sed -i '' -e "s/<project_name>/$projectName/g" ./installcifmodule \
   && sed -i '' -e "s/<project_name>/$projectName/g" ./.docker/bin/install-magento2 \
-  && sed -i '' -e "s/<project_name>/$projectName/g" ./.docker/config/magento.conf
+  && sed -i '' -e "s/<project_name>/$projectName/g" ./.docker/config/magento.conf \
+  && sed -i '' -e "s/<project_name>/$projectName/g" ./dumpdb \
+  && sed -i '' -e "s/<project_name>/$projectName/g" ./importdb
 else
 # else, good luck bro
   git checkout -f master;
