@@ -4,17 +4,19 @@
 aggravatedservices="commerce-cif-magento-extension/AggregatedServices";
 projectname="<project_name>"
 
-# clone cif extension into local dir
-echo "Cloning CIF Module locally";
-git clone https://github.com/adobe/commerce-cif-magento-extension.git commerce-cif-magento-extension/
-
 dockerdo() {
     docker exec -i ${projectname}_apache_1 /usr/bin/env bash -c "$1"
 }
 
+if [ ! -d ${aggravatedservices} ]; then
+    # clone cif extension into local dir
+    echo "Cloning CIF Module locally.";
+    git clone https://github.com/adobe/commerce-cif-magento-extension.git commerce-cif-magento-extension/
+fi
+
 if [ -d src/app/code/Magento ]; then
   if [ -d ${aggravatedservices} ]; then
-    echo "Copying commerce-cif-magento-extension/AggregatedServices into src";
+    echo "Copying commerce-cif-magento-extension/AggregatedServices into src/.";
     #ln -s ${aggravatedservices}  src/app/code/Magento;
     cp -R ${aggravatedservices}  src/app/code/Magento \
     && echo "Enabling Module";echo "" \
@@ -24,5 +26,10 @@ if [ -d src/app/code/Magento ]; then
     && dockerdo "bin/magento setup:static-content:deploy -f" \
     && dockerdo "bin/magento cache:clean"
     echo "";echo ""
+  else
+    echo "AggregatedServices Module not found."
   fi
+else
+    echo "Magento is not installed."
+    echo "";echo ""
 fi
