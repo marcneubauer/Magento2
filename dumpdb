@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+ backup="$1"
+ mysqlContainer="<project_name>_db_1"
+
+    if [ -n "${backup// }" ]; then
+        if [ "${backup// }" == "-backup" ]; then
+            backup="<project_name>.local"
+        fi
+        backup="$backup.$(date +'%Y%m%d.%H%M').sql.gz"
+
+        echo "Making backup of current DB"
+        echo "Backing up to ./backup/$backup"
+
+        docker exec $mysqlContainer /bin/bash -c "mysqldump -uroot -proot magento | gzip > /$backup"
+        docker cp $mysqlContainer:/$backup ./backup/
+        docker exec $mysqlContainer rm $backup
+    fi
+    echo ""

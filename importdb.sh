@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mysqlContainer="magecif_db_1"
+mysqlContainer="<project_name>_db_1"
 
 db=$(find ./backup -regex "^.*.local.*sql.gz$" | sort -r | head -n1)
         if [ -n "${db// }" ]; then
