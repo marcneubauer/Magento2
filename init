@@ -19,9 +19,9 @@ git log --graph --boundary '--format=%C(yellow)%h%Creset%C(bold cyan)%d%Creset %
 #git config --global core.fileMode false
 #git config --global diff.renamelimit 5000
 
-echo "-------------------======= Pulling Image ========-------------------------" \
+#echo "-------------------======= Pulling Image ========-------------------------" \
 
-docker image pull rafaelcgstz/magento2
+#docker image pull rafaelcgstz/magento2
 
 # apply project name to config files
 if [ "$(uname)" == "Darwin" ]; then
@@ -58,6 +58,6 @@ fi
 #  fi
 #fi
 
-chmod -R 777 src
+# chmod -R 777 src
 
 bash start

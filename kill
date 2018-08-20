@@ -3,3 +3,5 @@ docker-compose stop
 docker-sync stop
 docker-compose down -v
 docker-sync clean
+
+# @todo this needs to remove the docker-sync networks as well
