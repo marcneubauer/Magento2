@@ -26,9 +26,11 @@ git log --graph --boundary '--format=%C(yellow)%h%Creset%C(bold cyan)%d%Creset %
 # apply project name to config files
 if [ "$(uname)" == "Darwin" ]; then
 #  if on a mac, checkout mcif branch based off origin/mac
-  git checkout -f mcif;
+ # git checkout -f mcif;
 # sprinkle around project name captured at top
+# @todo refactor as much as possible into COMPOSE_PROJECT_NAME
   sed -i '' -e "s/<project_name>/$projectName/g" docker-compose.yml \
+  && sed -i '' -e "s/<project_name>/$projectName/g" ./.env \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-compose-dev.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" docker-sync.yml \
   && sed -i '' -e "s/<project_name>/$projectName/g" ./start \
