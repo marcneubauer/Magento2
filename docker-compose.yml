@@ -4,11 +4,11 @@ services:
 #    image: rafaelcgstz/magento2
     build: .
     ports:
-      - "80:80" # web
-      - "9001:9000" # xdebug
+      - "8080:80" # web
+      - "9009:9000" # xdebug
       # - "35729:35729" # live reload
     volumes:
-      - <project_name>-sync:/var/www/html:nocopy
+      - magentow-sync:/var/www/html:nocopy
       - ~/.composer:/var/www/.composer
       - ~/.npm:/var/www/.npm
       # - ~/.nvm:/var/www/.nvm
@@ -44,7 +44,7 @@ services:
      - PMA_PASSWORD=root
      - MYSQL_ROOT_PASSWORD=root
     ports:
-     - 8080:80
+     - 8081:80
     networks:
       - network
 
