@@ -23,5 +23,7 @@ echo "
       ⚙️ PHPMyAdmin: http://www.<project_name>.com:8080
       ✉️ Local emails: http://www.<project_name>.com:8025
 
+        Add to your local etc/hosts:
+        127.0.0.1  www.<project_name>.com
 ===================== 🚀 Done 🚀 ==================="
 #&& git status;
