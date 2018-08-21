@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 webroot="/var/www/html"
-mageGraphQL="./backup/graphql-ce"
+mageGraphQL="./backup/graphql-ce/"
 installer="echo -e \"----====Composer Installing.====----\"  && composer install  && chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc  && chmod u+x ./bin/magento  && echo -e  ====bin/magento setup:install====---- && php -f ./bin/magento setup:install --base-url=http://www.magecif.com/  --db-host=db  --db-name=magento  --db-user=magento  --db-password=magento  --admin-firstname=Magento  --admin-lastname=Commerce  --admin-email=user@example.com  --admin-user=admin  --admin-password=admin123  --language=en_US  --currency=USD  --timezone=America/Denver  --use-rewrites=1  --backend-frontname=admin  --use-sample-data"
 
 dockerdo() {
-    docker-compose exec --user www-data apache /usr/bin/env bash -c "$1"
+    docker-compose exec --user root apache /usr/bin/env bash -c "$1"
 }
 
 if [ ! -d ${mageGraphQL} ]; then
@@ -19,16 +19,20 @@ if [ -d ${mageGraphQL} ]; then
     # check if there is already something in webroot
     if [ -d ./src ]; then
         echo "Removing ./src and webroot" \
-        && rm -rf ./src/* \
-        && rm -rf ./src/.* \
-        && echo "hope you didn't want any of that."
+        && rm -rf ./src/*; \
+         rm -rf ./src/.*; \
+         echo "hope you didn't want any of that."
     fi
-    echo "Copying Magento 2 GraphQL community project into src/.";
     #ln -s ${mageGraphQL}  src/app/code/Magento;
-    cp -R ${mageGraphQL} ./src/ \
+    echo "Clearing container webroot"; \
+    dockerdo "rm -rf /var/www/html/*"; \
+    echo "Copying Magento 2 GraphQL community project into container"; \
+    docker cp  ${mageGraphQL} "$(docker-compose ps -q apache)":/var/www/ce \
     && echo "done" \
-    && echo "";
-    dockerdo ${installer};
+    && echo "" \
+    && echo "copying into webroot" \
+    && dockerdo "cp -R /var/www/ce/* /var/www/html"
+#    && dockerdo "${installer}";
 #   then install cif module bash
 else
     echo "What did you do?!?"

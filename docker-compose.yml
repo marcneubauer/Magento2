@@ -8,7 +8,7 @@ services:
       - "9001:9000" # xdebug
       # - "35729:35729" # live reload
     volumes:
-      - <project_name>-sync:/var/www/html:nocopy
+      - sync:/var/www/html:nocopy
       - ~/.composer:/var/www/.composer
       - ~/.npm:/var/www/.npm
       # - ~/.nvm:/var/www/.nvm
@@ -75,7 +75,7 @@ networks:
     driver: bridge
 
 volumes:
-  <project_name>-sync:
-    external: true
+    sync:
+        external: true
   dbdata:
     driver: local
