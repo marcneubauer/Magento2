@@ -4,5 +4,5 @@ services:
     volumes:
       - <project_name>-sync:/var/www/html:nocopy
 volumes:
-  sync:
+  <project_name>-sync:
     external: true

@@ -18,13 +18,14 @@ if [ -d src/app/code/Magento ]; then
     echo "Copying commerce-cif-magento-extension/AggregatedServices into src/.";
     #ln -s ${aggravatedservices}  src/app/code/Magento;
     cp -R ${aggravatedservices}  src/app/code/Magento \
-    && echo "Enabling Module";echo "" \
+    && echo "Enabling Module" && echo "" \
     && dockerdo "/var/www/html/bin/magento cache:clean" \
-    && dockerdo "/var/www/html/bin/magento setup:upgrade" \
+    && dockerdo "/var/www/html/bin/magento module:status" \
     && dockerdo "/var/www/html/bin/magento module:enable Magento_AggregatedServices" \
+    && dockerdo "/var/www/html/bin/magento setup:upgrade" \
     && dockerdo "/var/www/html/bin/magento setup:di:compile" \
     && dockerdo "/var/www/html/bin/magento setup:static-content:deploy -f" \
-    && dockerdo "/var/www/html/bin/magento cache:clean"
+    && dockerdo "/var/www/html/bin/magento cache:flush"
     echo "";echo ""
   else
     echo "AggregatedServices Module not found?"
