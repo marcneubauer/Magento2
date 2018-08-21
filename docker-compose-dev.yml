@@ -2,7 +2,7 @@ version: "2"
 services:
   apache:
     volumes:
-      - sync:/var/www/html:nocopy
+      - <project_name>-sync:/var/www/html:nocopy
 volumes:
   sync:
     external: true
