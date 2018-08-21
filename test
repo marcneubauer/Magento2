@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+installer="echo -e \"----====Composer Installing.====----\"  && composer install  && chmod u+w -R ./var ./vendor ./pub/static ./pub/media ./app/etc  && chmod u+x ./bin/magento  && echo -e  ====bin/magento setup:install====---- && php -f ./bin/magento setup:install --base-url=http://www.magecif.com/  --db-host=db  --db-name=magento  --db-user=magento  --db-password=magento  --admin-firstname=Magento  --admin-lastname=Commerce  --admin-email=user@example.com  --admin-user=admin  --admin-password=admin123  --language=en_US  --currency=USD  --timezone=America/Denver  --use-rewrites=1  --backend-frontname=admin  --use-sample-data"
+
+dockerdo() {
+    docker-compose exec --user www-data apache /usr/bin/env bash -c "$1"
+}
+
+dockerdo "${installer}";
