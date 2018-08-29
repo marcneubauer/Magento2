@@ -19,8 +19,8 @@ echo "
       v.$version
       Access your new links:
 
-      🌎 Web server: http://www.<project_name>.com/
-      ⚙️ PHPMyAdmin: http://www.<project_name>.com:8080
+      🌎 Web server: http://www.<project_name>.com:8088
+      ⚙️ PHPMyAdmin: http://www.<project_name>.com:8081
       ✉️ Local emails: http://www.<project_name>.com:8025
 
         Add to your local etc/hosts:
